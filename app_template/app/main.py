@@ -9,7 +9,7 @@ from app.api.auth import token
 from app.conf.settings import settings
 
 
-app = FastAPI(title="User Service", version="1.0.0")
+app = FastAPI(title="Fastapi app", version="1.0.0")
 
 for folder in ['app/static', 'app/templates']:
     os.makedirs(folder, exist_ok=True)
