@@ -5,7 +5,7 @@ class BaseCrudMixin:
     async def __init__(self, Model):
         self.Model = Model
     
-    async def missing_obj(self, obj, _id:int | None = None):
+    async def missing_obj(self, obj, _id:int | str | None = None):
         if obj is None:
             raise HTTPException(detail=f"Object with id: {_id} not found!", status_code=404)
         

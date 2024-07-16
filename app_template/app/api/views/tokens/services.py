@@ -25,6 +25,7 @@ class Token:
             )
         self._crud = crud.get('token_crud')
         self._user_crud = postgres_crud.get('user_crud')
+        # self._crud = postgres_crud.get('jwt_crud')
         
     
     async def create_token_data(self, user_obj) -> dict:

@@ -4,3 +4,4 @@ from .groups import (
     Group,
     UserGroups,
 )
+from .jwt import JWT
