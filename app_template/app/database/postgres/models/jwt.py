@@ -18,5 +18,5 @@ class JWT(Base):
     refresh_token_exp_at: Mapped[datetime] = mapped_column(sa.DateTime)
     access_token_exp_at: Mapped[datetime]  = mapped_column(sa.DateTime)
     user_id: Mapped[int] = mapped_column(sa.Integer, sa.ForeignKey("users.id"))
-    user: Mapped["User"] = relationship("User", backref=backref("otp", passive_deletes=True))
+    user: Mapped["User"] = relationship("User", backref=backref("jwt", passive_deletes=True))
     

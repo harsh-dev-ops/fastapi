@@ -39,7 +39,6 @@ class User(UserBase):
         user_data = data.model_dump(exclude_none=True)
         user_data.pop('confirm_password', None)
         user_obj = await self._crud.create(db, user_data)
-        
         return user_obj
         
     async def login(self, db:Session, data:UserLogin, background_tasks: BackgroundTasks | None = None) -> CreateTokenOut:
@@ -50,7 +49,6 @@ class User(UserBase):
         else:
             raise InvalidEmailId("Email Id not registered!", status.HTTP_404_NOT_FOUND)
     
-
     async def login_by_otp(self, db:Session, data:OtpIn, background_tasks: BackgroundTasks) -> CreateTokenOut:
         obj  = await self.otp_service.verify(db, data, background_tasks)
         return await self.token_service.generate(obj)
