@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 from app.conf.settings import settings
 from .schema import Token
-from ..views.users import services
+from ..views.users import services, schema
 from app.database.postgres.deps import db_dependency
 
 router = APIRouter()
@@ -26,7 +26,9 @@ async def login_access_token(
         'password': user_form.password
     }
     
-    resp = await user_service.login(db, payload)
+    user_data = schema.UserLogin(**payload)
+    
+    resp = await user_service.login(db, user_data)
     
     data = {
         'access_token': resp.access_token,

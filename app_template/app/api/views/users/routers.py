@@ -6,7 +6,7 @@ from app.database.postgres.deps import db_dependency
 from . import services, schema
 from ..tokens.schema import CreateTokenOut
 from ..otp.schema import OtpIn
-from app.api.auth.deps import token_details, get_token
+from app.api.auth.deps import token_details, get_token, oauth_token
 
 router = APIRouter()
 
@@ -61,7 +61,7 @@ async def user_login(
 async def user_logout(
     request: Request, 
     response: Response,
-    token: get_token,
+    token: oauth_token,
     db: db_dependency, 
     background_tasks: BackgroundTasks
     ):
