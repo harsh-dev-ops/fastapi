@@ -21,7 +21,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker/dev/dockerfile
+      dockerfile: docker/prod/dockerfile
     image: auth_service
     container_name: fastapi_app
     env_file:
